@@ -1,0 +1,44 @@
+name: Deploy Backend Lambda
+
+on: #Workflow 2 cases me run hoga: Jab GitHub me push hoga: and jab manually trigger hoga (workflow_dispatch) or sirf backend/process-uploaded-file folder me changes hone par hi run hoga
+    push:
+        paths:
+            - "backend/process-uploaded-file/**"
+        branches:
+            - main
+    workflow_dispatch:
+
+env:
+    AWS_REGION: us-east-1
+    LAMBDA_FUNCTION_NAME: ${{ secrets.LAMBDA_FUNCTION_NAME }}
+
+jobs:
+    deploy:
+        name: Update Lambda Function
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4 # GitHub repository ka code runner machine me download karta hai it means simple it does ye github repository se code ko checkout karta hai runner machine me
+
+            - name: Configure AWS credentials
+              uses: aws-actions/configure-aws-credentials@v2
+              with:
+                  aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+                  aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+                  aws-region: ${{ env.AWS_REGION }}
+
+            # #Saare files ko zip file me convert karo Because AWS Lambda only zip file accept karta hai
+            - name: Zip Lambda function code
+              run: |
+                  cd backend/process-uploaded-file
+                  zip -r lambda.zip .
+
+            #Kaunsa Lambda update karna hai
+            #Is zip file ko upload karo
+            # \ ka matlab hai ki command next line me continue hoga aur ye command ek hi line me execute hoga Same command ko readable banane ke liye:
+            - name: Update Lambda code
+              run: |
+                  aws lambda update-function-code \
+                    --function-name ${{ env.LAMBDA_FUNCTION_NAME }} \ 
+                    --zip-file fileb://backend/process-uploaded-file/lambda.zip

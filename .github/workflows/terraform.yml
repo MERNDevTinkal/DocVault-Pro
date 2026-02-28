@@ -1,0 +1,56 @@
+name: Terraform Deploy
+
+on:
+    push:
+        branches:
+            - main
+
+env:
+    AWS_REGION: us-east-1
+    TF_VAR_upload_bucket_name: ${{ secrets.UPLOAD_BUCKET_NAME }}
+    TF_VAR_aws_region: us-east-1
+
+jobs:
+    terraform:
+        name: Terraform Apply
+        runs-on: ubuntu-latest
+
+        # Terraform commands ko run karne se pehle working directory set karna hoga jaha pe Terraform configuration files hai, is case me infra/terraform folder me hai
+        defaults:
+            run:
+                working-directory: infra/terraform
+
+        steps:
+            - name: Checkout repo
+              uses: actions/checkout@v4
+
+              # Terraform setup karne ke liye HashiCorp ka official GitHub Action use kar rahe ho, jisse specified version of Terraform install ho jayega runner machine me
+            - name: Setup Terraform
+              uses: hashicorp/setup-terraform@v3
+              with:
+                  terraform_version: 1.6.6
+
+            - name: Configure AWS credentials
+              uses: aws-actions/configure-aws-credentials@v2
+              with:
+                  aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+                  aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+                  aws-region: ${{ env.AWS_REGION }}
+
+            # -reconfigure = Terraform ko force karo backend ko dobara configure karne ke liye Terraform purani backend settings ignore kare aur fresh backend setup kare Ignores old config and sets up backend again Reconnects S3 backend with new credentials and settings, ensuring Terraform state is properly managed in S3 bucket
+            - name: Terraform Init (Reconfigure)
+              run: terraform init -reconfigure
+
+            # - name: Terraform Plan
+            #   run: terraform plan
+
+            # - name: Terraform Apply
+            #   env:
+            #     GZIP: "false"
+            #   run: terraform apply -auto-approve
+
+            # GZIP Terraform state file ko zip mat karo GZIP=false ensures Terraform state file is stored uncompressed, which makes debugging and compatibility easier.
+            - name: Terraform Apply
+              env:
+                  GZIP: "false"
+              run: terraform destroy -auto-approve

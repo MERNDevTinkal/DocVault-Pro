@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DocVault Pro - Document Management Platform</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2306b6d4'><path d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z'/><path d='M14 2v6h6' fill='%231e293b'/></svg>">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'primary-blue': '#0f172a',
+            'primary-dark': '#1e293b',
+            'primary-accent': '#06b6d4',
+            'primary-light': '#1e3a8a'
+          },
+          backgroundImage: {
+            'gradient-hero': 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #164e63 100%)'
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-gradient-to-br from-slate-900 via-slate-800 to-blue-900">
+
+  <!-- Navigation -->
+  <nav class="bg-gradient-to-r from-slate-950 to-blue-950 shadow-xl shadow-blue-900/50 fixed w-full top-0 z-50 backdrop-blur-sm bg-opacity-95">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <a href="#home" class="flex items-center cursor-pointer hover:opacity-80 transition-opacity group">
+          <i class="fas fa-file-shield text-primary-accent text-2xl mr-3 group-hover:text-3xl transition-all"></i>
+          <span class="text-white text-xl font-bold group-hover:text-cyan-400 transition-colors">DocVault Pro</span>
+        </a>
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="#home" class="text-gray-300 hover:text-primary-accent transition-colors">Home</a>
+          <a href="#features" class="text-gray-300 hover:text-primary-accent transition-colors">Features</a>
+          <a href="#upload" class="text-gray-300 hover:text-primary-accent transition-colors">Upload</a>
+          <a href="#upload" class="bg-primary-accent text-white px-4 py-2 rounded-lg hover:bg-cyan-500 transition-colors inline-block">
+            Get Started
+          </a>
+        </div>
+        <div class="md:hidden flex items-center">
+          <button id="mobile-menu-btn" class="text-gray-300 hover:text-white">
+            <i class="fas fa-bars text-xl"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-primary-dark border-t border-gray-700">
+      <div class="px-2 pt-2 pb-3 space-y-1">
+        <a href="#home" class="block px-3 py-2 text-gray-300 hover:text-primary-accent">Home</a>
+        <a href="#features" class="block px-3 py-2 text-gray-300 hover:text-primary-accent">Features</a>
+        <a href="#upload" class="block px-3 py-2 text-gray-300 hover:text-primary-accent">Upload</a>
+        <a href="#upload" class="block w-full text-left bg-primary-accent text-white px-3 py-2 rounded-lg hover:bg-cyan-500 transition-colors mt-2">
+          Get Started
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="pt-20 pb-16 bg-gradient-to-br from-primary-blue to-primary-dark">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <h1 class="text-4xl md:text-6xl font-bold text-white mb-2">
+          DocVault Pro
+        </h1>
+        <div class="text-primary-accent text-xl md:text-2xl font-semibold mb-6">
+          Secure. Fast. Intelligent Document Management
+        </div>
+        <p class="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
+          Upload, process, and manage your documents with enterprise-grade security.<br>
+          Automated workflows, instant notifications, and cloud-powered performance.<br>
+          Experience the future of document management today.
+        </p>
+        <div class="flex gap-4 justify-center">
+          <a href="#upload" class="bg-primary-accent text-white px-8 py-3 rounded-lg font-semibold hover:bg-cyan-500 transition-colors">
+            <i class="fas fa-cloud-upload-alt mr-2"></i>Upload Document
+          </a>
+          <button class="border-2 border-primary-accent text-primary-accent px-8 py-3 rounded-lg font-semibold hover:bg-primary-accent hover:text-white transition-colors" onclick="showDevModal()">
+            Learn More
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="py-16 bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent mb-4">Powerful Features</h2>
+        <p class="text-gray-300 text-lg">Everything you need for professional document management</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-gradient-to-br from-slate-700/50 to-slate-800/50 border border-cyan-500/20 p-6 rounded-xl shadow-lg hover:shadow-2xl hover:border-cyan-400/50 transition-all group">
+          <div class="text-primary-accent text-3xl mb-4 group-hover:text-4xl group-hover:text-cyan-300 transition-all">
+            <i class="fas fa-lock"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-white mb-3 group-hover:text-cyan-400 transition-colors">Bank-Level Security</h3>
+          <p class="text-gray-300">End-to-end encryption with AES-256. Your documents are protected with enterprise-grade security standards.</p>
+        </div>
+        <div class="bg-gradient-to-br from-slate-700/50 to-slate-800/50 border border-cyan-500/20 p-6 rounded-xl shadow-lg hover:shadow-2xl hover:border-cyan-400/50 transition-all group">
+          <div class="text-primary-accent text-3xl mb-4 group-hover:text-4xl group-hover:text-cyan-300 transition-all">
+            <i class="fas fa-bolt"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-white mb-3 group-hover:text-cyan-400 transition-colors">Lightning Fast</h3>
+          <p class="text-gray-300">Powered by CDN and cloud infrastructure. Upload and access your documents in milliseconds.</p>
+        </div>
+        <div class="bg-gradient-to-br from-slate-700/50 to-slate-800/50 border border-cyan-500/20 p-6 rounded-xl shadow-lg hover:shadow-2xl hover:border-cyan-400/50 transition-all group">
+          <div class="text-primary-accent text-3xl mb-4 group-hover:text-4xl group-hover:text-cyan-300 transition-all">
+            <i class="fas fa-bell"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-white mb-3 group-hover:text-cyan-400 transition-colors">Instant Notifications</h3>
+          <p class="text-gray-300">Real-time email alerts when documents are uploaded, processed, or accessed.</p>
+        </div>
+        <div class="bg-gradient-to-br from-slate-700/50 to-slate-800/50 border border-cyan-500/20 p-6 rounded-xl shadow-lg hover:shadow-2xl hover:border-cyan-400/50 transition-all group">
+          <div class="text-primary-accent text-3xl mb-4 group-hover:text-4xl group-hover:text-cyan-300 transition-all">
+            <i class="fas fa-cog"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-white mb-3 group-hover:text-cyan-400 transition-colors">Auto Processing</h3>
+          <p class="text-gray-300">Automatic validation, indexing, and categorization of uploaded documents in real-time.</p>
+        </div>
+        <div class="bg-gradient-to-br from-slate-700/50 to-slate-800/50 border border-cyan-500/20 p-6 rounded-xl shadow-lg hover:shadow-2xl hover:border-cyan-400/50 transition-all group">
+          <div class="text-primary-accent text-3xl mb-4 group-hover:text-4xl group-hover:text-cyan-300 transition-all">
+            <i class="fas fa-chart-bar"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-white mb-3 group-hover:text-cyan-400 transition-colors">Analytics Dashboard</h3>
+          <p class="text-gray-300">Track uploads, processing times, and document metrics with comprehensive analytics.</p>
+        </div>
+        <div class="bg-gradient-to-br from-slate-700/50 to-slate-800/50 border border-cyan-500/20 p-6 rounded-xl shadow-lg hover:shadow-2xl hover:border-cyan-400/50 transition-all group">
+          <div class="text-primary-accent text-3xl mb-4 group-hover:text-4xl group-hover:text-cyan-300 transition-all">
+            <i class="fas fa-Globe"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-white mb-3 group-hover:text-cyan-400 transition-colors">Global Availability</h3>
+          <p class="text-gray-300">Access your documents anywhere, anytime. Replicated across multiple regions for reliability.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="py-16 bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent mb-4">What Users Say</h2>
+        <p class="text-gray-300 text-lg">Trusted by thousands of professionals and businesses</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-gradient-to-br from-slate-700/50 to-slate-800/50 border border-cyan-500/20 p-6 rounded-xl shadow-lg hover:shadow-2xl hover:border-cyan-400/50 transition-all group">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 bg-primary-accent rounded-full flex items-center justify-center text-white font-bold group-hover:bg-cyan-300 transition-colors">
+              JD
+            </div>
+            <div class="ml-4">
+              <h4 class="font-semibold text-white">John Davis</h4>
+              <p class="text-gray-400 text-sm">Legal Professional</p>
+            </div>
+          </div>
+          <p class="text-gray-300">"DocVault Pro has transformed how we manage client documents. Security is top-notch and the interface is intuitive. Highly recommended!"</p>
+          <div class="flex text-cyan-400 mt-4">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+        </div>
+        <div class="bg-gradient-to-br from-slate-700/50 to-slate-800/50 border border-cyan-500/20 p-6 rounded-xl shadow-lg hover:shadow-2xl hover:border-cyan-400/50 transition-all group">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 bg-primary-accent rounded-full flex items-center justify-center text-white font-bold group-hover:bg-cyan-300 transition-colors">
+              SH
+            </div>
+            <div class="ml-4">
+              <h4 class="font-semibold text-white">Sarah Hamilton</h4>
+              <p class="text-gray-400 text-sm">Business Owner</p>
+            </div>
+          </div>
+          <p class="text-gray-300">"The automated processing saves us hours every week. Notifications keep us informed in real-time. Best investment for our office!"</p>
+          <div class="flex text-cyan-400 mt-4">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+        </div>
+        <div class="bg-gradient-to-br from-slate-700/50 to-slate-800/50 border border-cyan-500/20 p-6 rounded-xl shadow-lg hover:shadow-2xl hover:border-cyan-400/50 transition-all group">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 bg-primary-accent rounded-full flex items-center justify-center text-white font-bold group-hover:bg-cyan-300 transition-colors">
+              MC
+            </div>
+            <div class="ml-4">
+              <h4 class="font-semibold text-white">Michael Chen</h4>
+              <p class="text-gray-400 text-sm">IT Manager</p>
+            </div>
+          </div>
+          <p class="text-gray-300">"The cloud infrastructure is rock solid. Zero downtime in 6 months of usage. Perfect for enterprise deployments."</p>
+          <div class="flex text-cyan-400 mt-4">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section class="py-16 bg-gradient-to-br from-slate-900/50 to-slate-800/50 backdrop-blur">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent mb-4">How It Works</h2>
+        <p class="text-gray-300 text-lg">Simple steps to secure your documents</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="text-center group">
+          <div class="w-20 h-20 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-6 text-white text-3xl font-bold group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-cyan-500/50 transition-all">
+            1
+          </div>
+          <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">Upload</h3>
+          <p class="text-gray-300">Select and upload your PDF or image documents. Supports multiple formats and sizes up to 10MB.</p>
+        </div>
+        <div class="text-center group">
+          <div class="w-20 h-20 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-6 text-white text-3xl font-bold group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-cyan-500/50 transition-all">
+            2
+          </div>
+          <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">Process</h3>
+          <p class="text-gray-300">Our system automatically validates, processes, and indexes your documents in real-time.</p>
+        </div>
+        <div class="text-center group">
+          <div class="w-20 h-20 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-6 text-white text-3xl font-bold group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-cyan-500/50 transition-all">
+            3
+          </div>
+          <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">Access</h3>
+          <p class="text-gray-300">Retrieve your documents anytime with secure links and get instant notifications on completion.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Upload Document Section -->
+  <section id="upload" class="py-16 bg-gradient-to-br from-slate-900/50 to-slate-800/50 backdrop-blur">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent mb-4">Upload Your Document</h2>
+        <p class="text-gray-300 text-lg">Secure and fast document submission. Your files are processed within seconds.</p>
+      </div>
+      <div class="bg-gradient-to-br from-slate-700/50 to-slate-800/50 border border-cyan-500/20 p-8 rounded-xl shadow-lg">
+        <form id="upload-form" class="space-y-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label class="block text-sm font-medium text-white mb-2">Full Name</label>
+              <input type="text" id="fullName" class="w-full px-4 py-3 border border-cyan-500/30 bg-slate-700/50 text-white rounded-lg focus:ring-2 focus:ring-cyan-400 focus:border-cyan-400 hover:border-cyan-500/50 transition-colors" placeholder="Enter your full name" required>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-white mb-2">Email Address</label>
+              <input type="email" id="email" class="w-full px-4 py-3 border border-cyan-500/30 bg-slate-700/50 text-white rounded-lg focus:ring-2 focus:ring-cyan-400 focus:border-cyan-400 hover:border-cyan-500/50 transition-colors" placeholder="Enter your email" required>
+            </div>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-white mb-2">Select Document</label>
+            <div id="upload-area" class="border-2 border-dashed border-cyan-500/40 rounded-lg p-8 text-center hover:border-cyan-400 hover:bg-cyan-500/5 transition-all cursor-pointer bg-slate-700/30">
+              <div id="upload-content">
+                <i class="fas fa-cloud-upload-alt text-4xl text-cyan-400 mb-4"></i>
+                <p class="text-gray-200 mb-2">Click to upload or drag and drop</p>
+                <p class="text-sm text-gray-400">PDF, JPG, PNG (max 10MB)</p>
+                <p class="text-sm text-cyan-400 mt-2" id="selected-file-name" style="display:none;"></p>
+              </div>
+              <div id="upload-progress" class="hidden">
+                <div class="w-full bg-slate-700/50 rounded-full h-2 mb-4">
+                  <div id="progress-bar" class="bg-gradient-to-r from-cyan-400 to-blue-400 h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
+                </div>
+                <p class="text-cyan-400 font-medium">Uploading... <span id="progress-text">0%</span></p>
+              </div>
+              <div id="upload-success" class="hidden">
+                <i class="fas fa-check-circle text-4xl text-cyan-400 mb-4"></i>
+                <p class="text-cyan-400 font-medium">Document uploaded successfully!</p>
+                <p class="text-sm text-gray-300" id="file-name"></p>
+              </div>
+              <div id="upload-error" class="hidden">
+                <i class="fas fa-times-circle text-4xl text-red-400 mb-4"></i>
+                <p class="text-red-400 font-medium" id="error-message"></p>
+              </div>
+            </div>
+            <input type="file" id="file-input" class="hidden" accept=".jpg,.jpeg,.png,.pdf">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-white mb-2">Document Type</label>
+            <select id="docType" class="w-full px-4 py-3 border border-cyan-500/30 bg-slate-700/50 text-white rounded-lg focus:ring-2 focus:ring-cyan-400 focus:border-cyan-400 hover:border-cyan-500/50 transition-colors">
+              <option value="">Select document type...</option>
+              <option value="invoice">Invoice</option>
+              <option value="receipt">Receipt</option>
+              <option value="contract">Contract</option>
+              <option value="report">Report</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-white mb-2">Additional Notes (Optional)</label>
+            <textarea id="notes" rows="4" class="w-full px-4 py-3 border border-cyan-500/30 bg-slate-700/50 text-white rounded-lg focus:ring-2 focus:ring-cyan-400 focus:border-cyan-400 hover:border-cyan-500/50 transition-colors resize-none" placeholder="Any additional information about your document..."></textarea>
+          </div>
+          <button type="submit" class="w-full bg-gradient-to-r from-cyan-500 to-blue-500 text-white py-3 px-6 rounded-lg text-lg font-semibold hover:shadow-lg hover:shadow-cyan-500/50 transition-all transform hover:scale-105">
+            <i class="fas fa-upload mr-2"></i>Upload Document
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Smart Tools Section -->
+  <section id="tools" class="py-16 bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent mb-4">Smart Document Tools</h2>
+        <p class="text-gray-300 text-lg">Advanced capabilities to enhance your document management experience</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="bg-gradient-to-br from-slate-700/50 to-slate-800/50 border border-cyan-500/20 p-8 rounded-xl shadow-lg hover:shadow-2xl hover:border-cyan-400/50 transition-all group">
+          <div class="text-center">
+            <div class="w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-cyan-500/50 transition-all">
+              <i class="fas fa-search text-white text-2xl"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-white mb-4 group-hover:text-cyan-400 transition-colors">Smart Document Search</h3>
+            <p class="text-gray-300 mb-6">Find your documents instantly with intelligent search. Filter by type, date, keywords, and metadata in just seconds.</p>
+            <button class="bg-gradient-to-r from-cyan-500 to-blue-500 text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg hover:shadow-cyan-500/50 transition-all" onclick="showDevModal()">
+              <i class="fas fa-search mr-2"></i>Try Search
+            </button>
+          </div>
+        </div>
+        <div class="bg-gradient-to-br from-slate-700/50 to-slate-800/50 border border-cyan-500/20 p-8 rounded-xl shadow-lg hover:shadow-2xl hover:border-cyan-400/50 transition-all group">
+          <div class="text-center">
+            <div class="w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-cyan-500/50 transition-all">
+              <i class="fas fa-file-export text-white text-2xl"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-white mb-4 group-hover:text-cyan-400 transition-colors">Bulk Export</h3>
+            <p class="text-gray-300 mb-6">Export multiple documents at once. Get your data in multiple formats - ZIP, PDF, or organized by categories.</p>
+            <button class="bg-gradient-to-r from-cyan-500 to-blue-500 text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg hover:shadow-cyan-500/50 transition-all" onclick="showDevModal()">
+              <i class="fas fa-download mr-2"></i>Export Now
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Development Modal -->
+  <div id="devModal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50">
+    <div class="bg-gradient-to-br from-slate-800 to-slate-900 p-8 rounded-xl shadow-2xl border border-cyan-500/30 max-w-md w-full mx-4">
+      <div class="text-center">
+        <i class="fas fa-tools text-cyan-400 text-5xl mb-4 block"></i>
+        <h3 class="text-2xl font-bold text-white mb-4">🔧 Work in Progress</h3>
+        <p class="text-gray-300 mb-6">This feature is currently under development. We're actively working on it to bring you the best experience!</p>
+        <p class="text-gray-400 text-sm mb-6">Check back soon for updates and new capabilities.</p>
+        <button onclick="closeDevModal()" class="bg-gradient-to-r from-cyan-500 to-blue-500 text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg hover:shadow-cyan-500/50 transition-all">
+          Got It
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-gradient-to-r from-slate-950 to-blue-950 text-white py-12 border-t border-cyan-500/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div>
+          <a href="#home" class="flex items-center mb-4 cursor-pointer hover:opacity-80 transition-opacity inline-block group">
+            <i class="fas fa-file-shield text-cyan-400 text-2xl mr-3 group-hover:text-cyan-300 transition-colors"></i>
+            <span class="text-xl font-bold group-hover:text-cyan-400 transition-colors">DocVault Pro</span>
+          </a>
+          <p class="text-gray-400">Secure, fast, and intelligent document management for everyone. From individuals to enterprises.</p>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold mb-4 text-cyan-400">Quick Links</h4>
+          <ul class="space-y-2">
+            <li><a href="#home" class="text-gray-400 hover:text-cyan-400 transition-colors">Home</a></li>
+            <li><a href="#features" class="text-gray-400 hover:text-cyan-400 transition-colors">Features</a></li>
+            <li><a href="#upload" class="text-gray-400 hover:text-cyan-400 transition-colors">Upload</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-cyan-400 transition-colors cursor-pointer" onclick="event.preventDefault(); showDevModal()">Pricing</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold mb-4 text-cyan-400">Follow & Connect</h4>
+          <div class="space-y-2">
+            <p class="text-gray-400"><i class="fas fa-globe mr-2 text-cyan-400"></i><a href="https://tinkal.vercel.app/" target="_blank" class="hover:text-cyan-400 transition-colors">tinkal.vercel.app</a></p>
+            <div class="flex space-x-4 mt-4">
+              <a href="https://linkedin.com/in/tinkal-kumar-9b8013186" target="_blank" class="text-gray-400 hover:text-cyan-400 hover:scale-125 transition-all" title="LinkedIn"><i class="fab fa-linkedin text-xl"></i></a>
+              <a href="https://www.instagram.com/tinkal_kumar__/" target="_blank" class="text-gray-400 hover:text-cyan-400 hover:scale-125 transition-all" title="Instagram"><i class="fab fa-instagram text-xl"></i></a>
+              <a href="https://github.com/MERNDevTinkal" target="_blank" class="text-gray-400 hover:text-cyan-400 hover:scale-125 transition-all" title="GitHub"><i class="fab fa-github text-xl"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-cyan-500/20 mt-8 pt-8 text-center">
+        <p class="text-gray-400">&copy; <span id="year"></span> DocVault Pro. All rights reserved. | Privacy Policy | Terms of Service</p>
+      </div>
+    </div>
+  </footer>
+
+<!-- Scripts -->
+  <script>
+    // Development Modal Functions
+    function showDevModal() {
+      document.getElementById('devModal').classList.remove('hidden');
+    }
+
+    function closeDevModal() {
+      document.getElementById('devModal').classList.add('hidden');
+    }
+
+    // Close modal when clicking outside of it
+    window.addEventListener('click', function(e) {
+      const modal = document.getElementById('devModal');
+      if (e.target === modal) {
+        closeDevModal();
+      }
+    });
+
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Set dynamic year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Upload area logic
+    const uploadArea = document.getElementById('upload-area');
+    const fileInput = document.getElementById('file-input');
+    const uploadContent = document.getElementById('upload-content');
+    const uploadProgress = document.getElementById('upload-progress');
+    const uploadSuccess = document.getElementById('upload-success');
+    const uploadError = document.getElementById('upload-error');
+    const progressBar = document.getElementById('progress-bar');
+    const progressText = document.getElementById('progress-text');
+    const fileName = document.getElementById('file-name');
+    const errorMessage = document.getElementById('error-message');
+    const selectedFileName = document.getElementById('selected-file-name');
+    let uploadedFile = null;
+
+    uploadArea.addEventListener('click', () => fileInput.click());
+    uploadArea.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      uploadArea.classList.add('border-primary-accent', 'bg-cyan-50');
+    });
+    uploadArea.addEventListener('dragleave', () => {
+      uploadArea.classList.remove('border-primary-accent', 'bg-cyan-50');
+    });
+    uploadArea.addEventListener('drop', (e) => {
+      e.preventDefault();
+      uploadArea.classList.remove('border-primary-accent', 'bg-cyan-50');
+      const files = e.dataTransfer.files;
+      if (files.length > 0) handleFile(files[0]);
+    });
+    fileInput.addEventListener('change', (e) => {
+      if (e.target.files.length > 0) handleFile(e.target.files[0]);
+    });
+
+    function resetUploadUI() {
+      uploadContent.classList.remove('hidden');
+      uploadProgress.classList.add('hidden');
+      uploadSuccess.classList.add('hidden');
+      uploadError.classList.add('hidden');
+      progressBar.style.width = '0%';
+      progressText.textContent = '0%';
+      fileName.textContent = '';
+      errorMessage.textContent = '';
+      selectedFileName.style.display = 'none';
+      selectedFileName.textContent = '';
+    }
+
+    function handleFile(file) {
+      resetUploadUI();
+      // Validate file type and size
+      const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'application/pdf'];
+      const maxSize = 10 * 1024 * 1024; // 10MB
+
+      if (!allowedTypes.includes(file.type)) {
+        uploadContent.classList.add('hidden');
+        uploadError.classList.remove('hidden');
+        errorMessage.textContent = 'Please upload a JPG, PNG, or PDF file.';
+        selectedFileName.style.display = 'none';
+        return;
+      }
+      if (file.size > maxSize) {
+        uploadContent.classList.add('hidden');
+        uploadError.classList.remove('hidden');
+        errorMessage.textContent = 'File size must be less than 10MB.';
+        selectedFileName.style.display = 'none';
+        return;
+      }
+      uploadedFile = file;
+      selectedFileName.textContent = `Ready to upload: ${file.name}`;
+      selectedFileName.style.display = 'block';
+      uploadContent.classList.remove('hidden');
+      uploadSuccess.classList.add('hidden');
+      uploadError.classList.add('hidden');
+    }
+
+    // Form submission logic
+    document.getElementById('upload-form').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const fullName = document.getElementById('fullName').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const notes = document.getElementById('notes').value.trim();
+
+      if (!fullName || !email) {
+        alert('Please fill in all required fields.');
+        return;
+      }
+      if (!uploadedFile) {
+        alert('Please select a document to upload.');
+        return;
+      }
+
+      // Show progress bar
+      uploadSuccess.classList.add('hidden');
+      uploadError.classList.add('hidden');
+      uploadProgress.classList.remove('hidden');
+      progressBar.style.width = '0%';
+      progressText.textContent = '0%';
+
+      try {
+        // Step 1: Get presigned URL
+        // presigned_url_endpoint/generate-presigned-url
+        const apiUrl = "https://pw24qfudi7.execute-api.us-east-1.amazonaws.com/generate-presigned-url";
+        const presignRes = await fetch(apiUrl, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            filename: uploadedFile.name,
+            contentType: uploadedFile.type,
+            fullName,
+            email,
+            notes
+          })
+        });
+        const presignData = await presignRes.json();
+        if (!presignRes.ok) throw new Error(presignData.message || "Failed to get presigned URL");
+        const uploadUrl = presignData.uploadUrl;
+
+        // Step 2: Upload to S3 using presigned URL with progress
+        await uploadFileWithProgress(uploadUrl, uploadedFile, uploadedFile.type);
+
+        // Show success
+        uploadProgress.classList.add('hidden');
+        uploadSuccess.classList.remove('hidden'); // Show success after upload
+        fileName.textContent = uploadedFile.name;
+        selectedFileName.style.display = 'none';
+        uploadedFile = null;
+        // Optionally, reset form fields
+        // document.getElementById('upload-form').reset();
+      } catch (err) {
+        uploadProgress.classList.add('hidden');
+        uploadError.classList.remove('hidden');
+        errorMessage.textContent = "Upload failed: " + err.message;
+      }
+    });
+
+    // Helper to upload file with progress
+    function uploadFileWithProgress(url, file, contentType) {
+      return new Promise((resolve, reject) => {
+        const xhr = new XMLHttpRequest();
+        xhr.open("PUT", url, true);
+        xhr.setRequestHeader("Content-Type", contentType);
+        xhr.upload.onprogress = function (e) {
+          if (e.lengthComputable) {
+            const percent = Math.round((e.loaded / e.total) * 100);
+            progressBar.style.width = percent + '%';
+            progressText.textContent = percent + '%';
+          }
+        };
+        xhr.onload = function () {
+          if (xhr.status >= 200 && xhr.status < 300) {
+            progressBar.style.width = '100%';
+            progressText.textContent = '100%';
+            resolve();
+          } else {
+            reject(new Error("File upload failed"));
+          }
+        };
+        xhr.onerror = function () {
+          reject(new Error("File upload failed"));
+        };
+        xhr.send(file);
+      });
+    }
+
+    // Smooth scroll for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+        // Close mobile menu if open
+        mobileMenu.classList.add('hidden');
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+name: Deploy Frontend to S3 and Invalidate CloudFront
+
+on:
+    push:
+        paths:
+            - "frontend/**"
+        branches:
+            - main
+
+    workflow_dispatch:
+env:
+    AWS_REGION: us-east-1
+    S3_BUCKET: ${{ secrets.FRONTEND_BUCKET_NAME }}
+    CLOUDFRONT_DIST_ID: ${{ secrets.CLOUDFRONT_DIST_ID }}
+
+jobs:
+    deploy:
+        name: Upload to S3 and Invalidate CloudFront
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+
+            - name: Configure AWS credentials
+              uses: aws-actions/configure-aws-credentials@v2
+              with:
+                  aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+                  aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+                  aws-region: ${{ env.AWS_REGION }}
+
+            #Local frontend → S3 me upload karo Aur old files remove karo
+            - name: Sync files to S3
+              run: |
+                  aws s3 sync frontend/ s3://${{ env.S3_BUCKET }} --delete
+
+            # aws cloudfront create-invalidation means CloudFront cache clear karo taki latest frontend changes reflect ho sake --distribution-id Kaunsa CloudFront clear karna hai --paths "/*" matlab saare paths clear karna hai taki koi bhi cached file na rahe
+            - name: Invalidate CloudFront cache
+              run: |
+                  aws cloudfront create-invalidation \
+                    --distribution-id ${{ env.CLOUDFRONT_DIST_ID }} \
+                    --paths "/*"
