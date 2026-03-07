@@ -44,13 +44,13 @@ jobs:
             - name: Terraform Plan
               run: terraform plan
 
-            - name: Terraform Apply
-              env:
-                GZIP: "false"
-              run: terraform apply -auto-approve
+            # - name: Terraform Apply
+            #   env:
+            #     GZIP: "false"
+            #   run: terraform apply -auto-approve
 
             # GZIP Terraform state file ko zip mat karo GZIP=false ensures Terraform state file is stored uncompressed, which makes debugging and compatibility easier.
-            # - name: Terraform Destroy
-            #   env:
-            #       GZIP: "false"
-            #   run: terraform destroy -auto-approve
+            - name: Terraform Destroy
+              env:
+                  GZIP: "false"
+              run: terraform destroy -auto-approve
