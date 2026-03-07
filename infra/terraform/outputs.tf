@@ -16,6 +16,11 @@ output "cloudfront_url" {
   value       = aws_cloudfront_distribution.frontend_distribution.domain_name
 }
 
+output "cloudfront_distribution_id" {
+  description = "CloudFront distribution ID"
+  value       = aws_cloudfront_distribution.frontend_distribution.id
+}
+
 output "presigned_url_api_endpoint" {
   description = "API endpoint to generate presigned S3 upload URLs"
   value       = aws_apigatewayv2_api.presign_api.api_endpoint

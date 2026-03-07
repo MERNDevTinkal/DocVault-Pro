@@ -8,7 +8,7 @@ A fully integrated DevOps project simulating real-world CI/CD workflows, infrast
 
 ## Project Overview
 
-This DevOps Accelerator enables users to
+This DevOps DocVault Pro enables users to
 - Upload input files through a frontend hosted on S3 + CloudFront
 - Automatically trigger processing via Lambda and S3 events
 - Use pre-signed URLs for secure uploads
@@ -257,8 +257,8 @@ Go to:
 | `AWS_SECRET_ACCESS_KEY` | Your AWS IAM secret key                           |
 | `AWS_REGION`            | `us-east-1`                                       |
 | `LAMBDA_FUNCTION_NAME`  | `process-uploaded-file`                           |
-| `FRONTEND_BUCKET_NAME`  | e.g. `devops-accelerator-frontend-hosting-bucket` |
-| `UPLOAD_BUCKET_NAME`    | e.g. `devops-accelerator-upload-bucket`           |
+| `FRONTEND_BUCKET_NAME`  | Your Frontend Bucket Name                         |
+| `UPLOAD_BUCKET_NAME`    | York Upload Bucket Name                           |
 
  **Later (after Terraform apply):**
 
