@@ -421,7 +421,9 @@ resource "aws_apigatewayv2_stage" "presign_stage" {  #Stage = Running version of
   auto_deploy = true #When change happens → auto update deploy kar de
 
   default_route_settings {  #Default settings for all routes in this stage 
-    data_trace_enabled = true 
+    data_trace_enabled = true
+    throttling_burst_limit = 50
+    throttling_rate_limit  = 100
   }
 
   access_log_settings { #Access logs enable kar rahe ho
