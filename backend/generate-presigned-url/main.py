@@ -3,7 +3,7 @@ import os
 import boto3
 import uuid
 
-s3 = boto3.client("s3") # create connection with s3 bucket
+s3 = boto3.client("s3") # create connection with s3 bucket ok
 BUCKET_NAME = os.environ["BUCKET_NAME"] # read from env variable bucket name
 
 # AWS Lambda Calls

@@ -15,7 +15,7 @@ SNS_TOPIC_ARN = os.environ.get('SNS_TOPIC_ARN')
 sns = boto3.client('sns') # for notification
 
 def lambda_handler(event, context):
-    s3 = boto3.client('s3') # s3 connection
+    s3 = boto3.client('s3') # s3 connection ok
 
     record = event['Records'][0]
     bucket_name = record['s3']['bucket']['name']
