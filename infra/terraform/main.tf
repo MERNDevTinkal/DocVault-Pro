@@ -266,6 +266,19 @@ resource "aws_s3_bucket_cors_configuration" "frontend_cors" {
 
 }
 
+# CORS for Upload Bucket - Browser se presigned URL par PUT request ke liye zaroori hai
+resource "aws_s3_bucket_cors_configuration" "upload_cors" {
+  bucket = aws_s3_bucket.upload_bucket.id
+
+  cors_rule {
+    allowed_headers = ["*"]
+    allowed_methods = ["PUT", "POST", "GET", "HEAD"]
+    allowed_origins = ["*"]
+    expose_headers  = ["ETag"]
+    max_age_seconds = 3000
+  }
+}
+
 # CloudFront Distribution
 resource "aws_cloudfront_distribution" "frontend_distribution" {
   enabled             = true
