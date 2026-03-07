@@ -1,4 +1,3 @@
-# Rebuild: trigger backend deployment
 import boto3
 import logging
 import os
